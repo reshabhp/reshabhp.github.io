@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>[Your Name] — Operations &amp; Business</title>
+<meta name="description" content="Personal site of [Your Name], an Operations &amp; Business professional.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#EEF0E9;
+    --paper-raised:#F7F8F3;
+    --ink:#1E2A22;
+    --ink-soft:#4B5A4F;
+    --teal:#3B6E63;
+    --teal-deep:#2A4F47;
+    --amber:#C98A2C;
+    --line:#CBD1C3;
+    --max:920px;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:var(--paper);
+    color:var(--ink);
+    font-family:'Inter',sans-serif;
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3{
+    font-family:'Fraunces',serif;
+    font-weight:600;
+    letter-spacing:-0.01em;
+    color:var(--ink);
+  }
+  .mono{
+    font-family:'IBM Plex Mono',monospace;
+    letter-spacing:0.02em;
+  }
+  a{color:var(--teal-deep);}
+  .wrap{max-width:var(--max); margin:0 auto; padding:0 28px;}
+
+  /* ---------- nav ---------- */
+  nav{
+    position:sticky; top:0; z-index:50;
+    background:rgba(238,240,233,0.88);
+    backdrop-filter:blur(8px);
+    border-bottom:1px solid var(--line);
+  }
+  nav .wrap{display:flex; align-items:center; justify-content:space-between; height:64px;}
+  .brand{font-family:'Fraunces',serif; font-weight:600; font-size:1.15rem;}
+  .brand .dot{color:var(--amber);}
+  nav ul{list-style:none; display:flex; gap:28px;}
+  nav a{text-decoration:none; color:var(--ink-soft); font-size:0.92rem; font-family:'IBM Plex Mono',monospace;}
+  nav a:hover{color:var(--teal-deep);}
+
+  /* ---------- process line signature element ---------- */
+  .flow{position:relative;}
+  .flow::before{
+    content:"";
+    position:absolute;
+    left:0; top:8px; bottom:8px;
+    width:2px;
+    background:repeating-linear-gradient(to bottom, var(--teal) 0 6px, transparent 6px 12px);
+  }
+  .flow-node{
+    position:absolute; left:-5px; top:0;
+    width:12px; height:12px; border-radius:50%;
+    background:var(--paper); border:2px solid var(--teal);
+  }
+  section{position:relative;}
+  .flow > .wrap{padding-left:36px; border-left:0;}
+
+  @media (max-width: 720px){
+    .flow::before, .flow-node{display:none;}
+    .flow > .wrap{padding-left:28px;}
+  }
+
+  /* ---------- hero ---------- */
+  header.hero{padding:96px 0 72px;}
+  .eyebrow{
+    display:inline-flex; align-items:center; gap:8px;
+    font-family:'IBM Plex Mono',monospace; font-size:0.82rem;
+    color:var(--teal-deep); background:var(--paper-raised);
+    border:1px solid var(--line); padding:6px 12px; border-radius:100px;
+    margin-bottom:24px;
+  }
+  .eyebrow .blink{
+    width:7px; height:7px; border-radius:50%; background:var(--amber);
+    animation:blink 1.4s infinite;
+  }
+  @keyframes blink{0%,100%{opacity:1;}50%{opacity:0.25;}}
+
+  .hero-grid{display:flex; gap:48px; align-items:flex-end; flex-wrap:wrap;}
+  .hero-text h1{font-size:clamp(2.2rem, 5vw, 3.4rem); line-height:1.08; max-width:14ch;}
+  .hero-text p.lede{font-size:1.15rem; color:var(--ink-soft); max-width:46ch; margin-top:18px;}
+  .hero-photo{
+    width:132px; height:132px; border-radius:50%;
+    background:var(--paper-raised); border:2px solid var(--line);
+    display:flex; align-items:center; justify-content:center;
+    font-family:'IBM Plex Mono',monospace; font-size:0.75rem; color:var(--ink-soft);
+    text-align:center; flex-shrink:0;
+  }
+  .cta-row{display:flex; gap:14px; margin-top:32px; flex-wrap:wrap;}
+  .btn{
+    font-family:'IBM Plex Mono',monospace; font-size:0.88rem;
+    padding:12px 20px; border-radius:6px; text-decoration:none;
+    display:inline-block; transition:transform 0.15s ease;
+  }
+  .btn:hover{transform:translateY(-2px);}
+  .btn-solid{background:var(--teal-deep); color:var(--paper);}
+  .btn-outline{border:1px solid var(--ink); color:var(--ink);}
+
+  /* ---------- stats ---------- */
+  .stats{display:grid; grid-template-columns:repeat(3,1fr); gap:24px; margin-top:64px; border-top:1px solid var(--line); padding-top:32px;}
+  .stat b{font-family:'Fraunces',serif; font-size:2.1rem; display:block; color:var(--teal-deep);}
+  .stat span{font-family:'IBM Plex Mono',monospace; font-size:0.8rem; color:var(--ink-soft);}
+  @media (max-width:600px){.stats{grid-template-columns:1fr 1fr;}}
+
+  /* ---------- section shared ---------- */
+  section{padding:64px 0;}
+  .section-label{
+    font-family:'IBM Plex Mono',monospace; font-size:0.78rem;
+    color:var(--amber); text-transform:uppercase; letter-spacing:0.08em;
+    margin-bottom:10px;
+  }
+  section h2{font-size:1.9rem; margin-bottom:28px;}
+
+  /* ---------- about ---------- */
+  .about-text p{max-width:62ch; margin-bottom:16px; color:var(--ink-soft);}
+  .about-text strong{color:var(--ink);}
+
+  /* ---------- skills ---------- */
+  .skill-cols{display:grid; grid-template-columns:1fr 1fr; gap:36px;}
+  .skill-cols h3{font-size:1rem; font-family:'IBM Plex Mono',monospace; color:var(--teal-deep); margin-bottom:14px; font-weight:500;}
+  .pill-row{display:flex; flex-wrap:wrap; gap:8px;}
+  .pill{
+    font-family:'IBM Plex Mono',monospace; font-size:0.8rem;
+    background:var(--paper-raised); border:1px solid var(--line);
+    padding:7px 12px; border-radius:100px; color:var(--ink);
+  }
+  @media (max-width:640px){.skill-cols{grid-template-columns:1fr;}}
+
+  /* ---------- experience timeline ---------- */
+  .job{padding:22px 0; border-bottom:1px solid var(--line);}
+  .job:last-child{border-bottom:none;}
+  .job-head{display:flex; justify-content:space-between; gap:16px; flex-wrap:wrap; align-items:baseline;}
+  .job-head h3{font-size:1.1rem; font-family:'Fraunces',serif; font-weight:600;}
+  .job-head .role-co{color:var(--teal-deep); font-weight:500;}
+  .job-date{font-family:'IBM Plex Mono',monospace; font-size:0.8rem; color:var(--ink-soft); white-space:nowrap;}
+  .job p{color:var(--ink-soft); margin-top:8px; max-width:62ch;}
+
+  /* ---------- projects ---------- */
+  .proj-grid{display:grid; grid-template-columns:1fr 1fr; gap:20px;}
+  .proj-card{
+    background:var(--paper-raised); border:1px solid var(--line); border-radius:10px;
+    padding:24px;
+  }
+  .proj-card .tag{font-family:'IBM Plex Mono',monospace; font-size:0.72rem; color:var(--amber); text-transform:uppercase; letter-spacing:0.06em;}
+  .proj-card h3{font-size:1.1rem; margin:8px 0 8px;}
+  .proj-card p{color:var(--ink-soft); font-size:0.94rem;}
+  @media (max-width:640px){.proj-grid{grid-template-columns:1fr;}}
+
+  /* ---------- curiosity log ---------- */
+  .log-item{
+    display:flex; gap:16px; padding:16px 0; border-bottom:1px dashed var(--line);
+    align-items:baseline;
+  }
+  .log-item:last-child{border-bottom:none;}
+  .log-date{font-family:'IBM Plex Mono',monospace; font-size:0.78rem; color:var(--ink-soft); flex-shrink:0; width:88px;}
+  .log-item p{color:var(--ink);}
+
+  /* ---------- contact / footer ---------- */
+  footer{padding:72px 0 48px; border-top:1px solid var(--line); margin-top:32px;}
+  footer h2{font-size:1.9rem; margin-bottom:12px;}
+  footer p{color:var(--ink-soft); max-width:48ch; margin-bottom:28px;}
+  .social-row{display:flex; gap:20px; flex-wrap:wrap; margin-top:28px;}
+  .social-row a{font-family:'IBM Plex Mono',monospace; font-size:0.85rem; text-decoration:none; color:var(--ink-soft); border-bottom:1px solid var(--line);}
+  .social-row a:hover{color:var(--teal-deep); border-color:var(--teal-deep);}
+  .fine{font-family:'IBM Plex Mono',monospace; font-size:0.75rem; color:var(--ink-soft); margin-top:48px;}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <div class="brand">[yourname]<span class="dot">.</span></div>
+    <ul>
+      <li><a href="#about">about</a></li>
+      <li><a href="#experience">experience</a></li>
+      <li><a href="#projects">work</a></li>
+      <li><a href="#contact">contact</a></li>
+    </ul>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="wrap">
+    <div class="eyebrow"><span class="blink"></span> open to opportunities</div>
+    <div class="hero-grid">
+      <div class="hero-text">
+        <h1>Hi, I'm [Your Name].</h1>
+        <p class="lede">I work in <strong>Operations &amp; Business</strong> — I make messy processes make sense. Off the clock, I'm endlessly curious about tech and AI, and I'm teaching myself to build things, starting with this site.</p>
+        <div class="cta-row">
+          <a class="btn btn-solid" href="#">View résumé</a>
+          <a class="btn btn-outline" href="#contact">Get in touch</a>
+        </div>
+      </div>
+      <div class="hero-photo">your<br>photo<br>here</div>
+    </div>
+
+    <div class="stats">
+      <div class="stat"><b>[X]</b><span>years in operations</span></div>
+      <div class="stat"><b>[X]</b><span>processes redesigned</span></div>
+      <div class="stat"><b>[X]</b><span>teams collaborated with</span></div>
+    </div>
+  </div>
+</header>
+
+<section id="about" class="flow">
+  <span class="flow-node"></span>
+  <div class="wrap">
+    <div class="section-label">01 — who i am</div>
+    <h2>About me</h2>
+    <div class="about-text">
+      <p>[A few sentences on your background — what you studied or how you got into Operations/Business, and what you actually do day to day. Be concrete: "I manage vendor relationships and streamline onboarding for a team of X" reads better than "I'm passionate about efficiency."]</p>
+      <p>[A paragraph on what drives you — this is the part a résumé can't hold. Maybe it's your curiosity about how AI is starting to touch operations work, or your habit of automating some tedious task just to see if you can. Say it plainly, in your own voice.]</p>
+      <p><strong>Outside of work</strong>, I'm [hobbies, interests, what you're currently learning — this is where personality lives].</p>
+    </div>
+  </div>
+</section>
+
+<section class="flow">
+  <span class="flow-node"></span>
+  <div class="wrap">
+    <div class="section-label">02 — toolkit</div>
+    <h2>Skills &amp; tools</h2>
+    <div class="skill-cols">
+      <div>
+        <h3>Operations &amp; business</h3>
+        <div class="pill-row">
+          <span class="pill">Process improvement</span>
+          <span class="pill">Excel / Sheets</span>
+          <span class="pill">Project management</span>
+          <span class="pill">Stakeholder management</span>
+          <span class="pill">[Your tool]</span>
+        </div>
+      </div>
+      <div>
+        <h3>Currently learning</h3>
+        <div class="pill-row">
+          <span class="pill">HTML &amp; CSS</span>
+          <span class="pill">Git &amp; GitHub</span>
+          <span class="pill">AI tools</span>
+          <span class="pill">[Something new]</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="experience" class="flow">
+  <span class="flow-node"></span>
+  <div class="wrap">
+    <div class="section-label">03 — where i've worked</div>
+    <h2>Experience</h2>
+
+    <div class="job">
+      <div class="job-head">
+        <h3>[Job Title] <span class="role-co">· [Company Name]</span></h3>
+        <span class="job-date mono">[Month Year] — Present</span>
+      </div>
+      <p>[One or two sentences on what you owned and a concrete result — a number if you have one: time saved, cost reduced, volume handled.]</p>
+    </div>
+
+    <div class="job">
+      <div class="job-head">
+        <h3>[Job Title] <span class="role-co">· [Company Name]</span></h3>
+        <span class="job-date mono">[Month Year] — [Month Year]</span>
+      </div>
+      <p>[Same format — what you did, what changed because you did it.]</p>
+    </div>
+
+    <div class="job">
+      <div class="job-head">
+        <h3>[Job Title] <span class="role-co">· [Company Name]</span></h3>
+        <span class="job-date mono">[Month Year] — [Month Year]</span>
+      </div>
+      <p>[Add or remove roles as needed.]</p>
+    </div>
+  </div>
+</section>
+
+<section id="projects" class="flow">
+  <span class="flow-node"></span>
+  <div class="wrap">
+    <div class="section-label">04 — things i've worked on</div>
+    <h2>Highlighted work</h2>
+    <div class="proj-grid">
+      <div class="proj-card">
+        <div class="tag">Process</div>
+        <h3>[Project or initiative name]</h3>
+        <p>[What the problem was, what you did, what changed. Treat this like a mini case study — it's the closest thing to a portfolio piece a non-technical role can have.]</p>
+      </div>
+      <div class="proj-card">
+        <div class="tag">Initiative</div>
+        <h3>[Project or initiative name]</h3>
+        <p>[Same format. Two or three of these is plenty — quality over quantity.]</p>
+      </div>
+      <div class="proj-card">
+        <div class="tag">Analysis</div>
+        <h3>[Project or initiative name]</h3>
+        <p>[If you don't have work examples yet, a personal project counts — e.g. "I analyzed my own budget and built a tracker."]</p>
+      </div>
+      <div class="proj-card">
+        <div class="tag">Side project</div>
+        <h3>This website</h3>
+        <p>Built from scratch with no prior coding experience, as a way to learn HTML, CSS, and Git. First entry in a longer story.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="flow">
+  <span class="flow-node"></span>
+  <div class="wrap">
+    <div class="section-label">05 — what i'm curious about</div>
+    <h2>Curiosity log</h2>
+    <div class="log-item">
+      <span class="log-date mono">[Month]</span>
+      <p>[A short line on something you learned, read, or built recently — this can be as small as "learned how GitHub Pages hosting works" or "read about how AI is changing supply chain forecasting."]</p>
+    </div>
+    <div class="log-item">
+      <span class="log-date mono">[Month]</span>
+      <p>[Keep adding to this over time — it's low-pressure and shows growth better than any bullet point could.]</p>
+    </div>
+  </div>
+</section>
+
+<footer id="contact" class="wrap">
+  <div class="section-label">06 — say hello</div>
+  <h2>Let's talk.</h2>
+  <p>Open to conversations about Operations &amp; Business roles, or just about tech, AI, and anything fascinating. Reach out any time.</p>
+  <a class="btn btn-solid" href="mailto:[your.email@example.com]">Email me</a>
+  <div class="social-row">
+    <a href="#">LinkedIn</a>
+    <a href="#">GitHub</a>
+    <a href="#">Resume (PDF)</a>
+  </div>
+  <div class="fine">© 2026 [Your Name]. Built by hand, learning as I go.</div>
+</footer>
+
+</body>
+</html>
